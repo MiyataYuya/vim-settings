@@ -143,4 +143,8 @@ if executable('pyls')
         \ })
 endif
 '''
+depends = ['prabirshrestha/vim-lsp.vim','prabirshrestha/asyncomplete-lsp.vim']
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
 

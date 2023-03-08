@@ -63,101 +63,6 @@ endif
 
 "End dein Scripts-------------------------
 
-
-"ddc.vim------------------
-
-" call ddc#custom#patch_global('ui','native')
-" call ddc#custom#patch_global('sources',['around','nextword'])
-" 
-" call ddc#custom#patch_global('sourceOptions',{
-"   \ 'around': {'mark':'A'},
-"   \ 'nextword': {'mark':'nextword'},
-"   \ '_': {
-"   \ 'matchers': ['matcher_head'],
-"   \ 'sorters': ['sorter_rank']},
-"   \ })
-" 
-" call ddc#custom#patch_global('sourceOptions',{
-"   \ 'around': {'mark':'A'},
-"   \ })
-" 
-" call ddc#enable()
-
-"end ddc.vim--------------------
-
-
-"vim-lsp-----------------------------
-
-" if executable('pylsp')
-"     " pip install python-lsp-server
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'pylsp',
-"         \ 'cmd': {server_info->['pylsp']},
-"         \ 'allowlist': ['python'],
-"         \ })
-" endif
-" 
-" function! s:on_lsp_buffer_enabled() abort
-"     setlocal omnifunc=lsp#complete
-"     setlocal signcolumn=yes
-"     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-"     nmap <buffer> gd <plug>(lsp-definition)
-"     nmap <buffer> gs <plug>(lsp-document-symbol-search)
-"     nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-"     nmap <buffer> gr <plug>(lsp-references)
-"     nmap <buffer> gi <plug>(lsp-implementation)
-"     nmap <buffer> gt <plug>(lsp-type-definition)
-"     nmap <buffer> <leader>rn <plug>(lsp-rename)
-"     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-"     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-"     nmap <buffer> K <plug>(lsp-hover)
-"     " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-"     " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-" 
-"     let g:lsp_format_sync_timeout = 1000
-"     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-"     
-"     " refer to doc to add more commands
-" endfunction
-" 
-" augroup lsp_install
-"     au!
-"     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-"     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-"   augroup END
-
-"end vim-lsp-----------------------------
-
-
-"autopep8---------------------------------
-
-"autopep8を<sift>+fで実行
-" function! Preserve(command)
-"     " Save the last search.
-"     let search = @/
-"     " Save the current cursor position.
-"     let cursor_position = getpos('.')
-"     " Save the current window position.
-"     normal! H
-"     let window_position = getpos('.')
-"     call setpos('.', cursor_position)
-"     " Execute the command.
-"     execute a:command
-"     " Restore the last search.
-"     let @/ = search
-"     " Restore the previous window position.
-"     call setpos('.', window_position)
-"     normal! zt
-"     " Restore the previous cursor position.
-"     call setpos('.', cursor_position)
-" endfunction
-" function! Autopep8()
-"     call Preserve(':silent %!autopep8 --ignore=E501 -')
-" endfunction
-" autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
-
-"end autopep8---------------------------------
-
 lua require('config')
 
 let mapleader = " "
@@ -177,6 +82,11 @@ set number
 
 set showtabline=2
 set autochdir
+
+noremap <F5> <ESC>:call RUN()<ENTER>
+function! RUN()
+  !python %
+endfunction
 
 " set shell=pwsh
 " set shell=C:\Program\ Files\Git\bin\bash.exe
