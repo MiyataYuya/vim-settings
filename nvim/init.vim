@@ -81,12 +81,12 @@ set smartindent
 set number
 
 set showtabline=2
-set autochdir
+" set autochdir
 
-noremap <F5> <ESC>:call RUN()<ENTER>
-function! RUN()
-  !python %
-endfunction
+" noremap <F5> <ESC>:call RUN()<ENTER>
+" function! RUN()
+"   !python %
+" endfunction
 
 " set shell=pwsh
 " set shell=C:\Program\ Files\Git\bin\bash.exe

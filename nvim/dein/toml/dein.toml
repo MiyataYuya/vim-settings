@@ -148,3 +148,9 @@ depends = ['prabirshrestha/vim-lsp.vim','prabirshrestha/asyncomplete-lsp.vim']
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
+[[plugins]]
+repo = 'thaerkh/vim-workspace'
+hook_add = '''
+let g:workspace_autocreate = 1
+'''
+
