@@ -6,30 +6,34 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/ddc.vim'
 hook_add = '''
 call ddc#custom#patch_global('ui', 'native')
-call ddc#custom#patch_global('sources', ['around'])
+call ddc#custom#patch_global('sources', ['vim-lsp'])
 call ddc#custom#patch_global('sourceOptions', #{
       \ _: #{
       \   matchers: ['matcher_head'],
       \   sorters: ['sorter_rank']},
+      \   minAutoCompleteLength: 0,
       \ })
 call ddc#custom#patch_global('sourceOptions', #{
-      \   around: #{ mark: 'A' },
+      \   around: #{ mark: 'lsp' },
       \ })
 
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sources',
-      \ ['around', 'clangd'])
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', #{
-      \   clangd: #{ mark: 'C' },
-      \ })
-
-call ddc#custom#patch_filetype(['python'], 'sources',
-      \ ['around', 'pylsp'])
-call ddc#custom#patch_filetype(['python'], 'sourceOptions', #{
-      \   clangd: #{ mark: 'python' },
-      \ })
+" call ddc#custom#patch_filetype(['c', 'cpp'], 'sources',
+"       \ ['around', 'clangd'])
+" call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', #{
+"       \   clangd: #{ mark: 'C' },
+"       \ })
+" 
+" call ddc#custom#patch_filetype(['python'], 'sources',
+"       \ ['around', 'pylsp'])
+" call ddc#custom#patch_filetype(['python'], 'sourceOptions', #{
+"       \   clangd: #{ mark: 'python' },
+"       \ })
 
 call ddc#enable()
 '''
+
+[[plugins]]
+repo = 'shun/ddc-source-vim-lsp'
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-native'
@@ -47,11 +51,14 @@ repo = 'Shougo/ddc-sorter_rank'
 [[plugins]]
 repo = 'Shougo/ddc-source-nextword'
 
-# [[plugins]]
-# repo = 'shun/ddc-vim-lsp'
-
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
@@ -68,15 +75,6 @@ repo = 'vim-denops/denops-helloworld.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-if executable('pylsp')
-    " pip install python-lsp-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -138,21 +136,11 @@ endfunction
 autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
 '''
 
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-hook_add = '''
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-'''
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete-lsp.vim'
+# 
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
@@ -172,6 +160,5 @@ nmap <C-n> <Plug>AirlineSelectNextTab
 '''
 
 [[plugins]]
-repo = 'vim-airline/vim-airline-theme'
-
+repo = 'vim-airline/vim-airline-themes'
 
