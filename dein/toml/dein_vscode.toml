@@ -1,0 +1,19 @@
+# Required:
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
+[[plugins]]
+repo = 'michaeljsmith/vim-indent-object'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'vim-denops/denops-helloworld.vim'
+
