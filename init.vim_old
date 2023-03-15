@@ -1,3 +1,5 @@
+lua require('config')
+
 let mapleader = "\<Space>"
 
 set encoding=utf-8
@@ -19,6 +21,11 @@ set exrc
 set showtabline=2
 " set autochdir
 
+" noremap <F5> <ESC>:call RUN()<ENTER>
+" function! RUN()
+"   !python %
+" endfunction
+
 " set shell=pwsh
 " set shell=C:\Program\ Files\Git\bin\bash.exe
 " set shellcmdflag=-c
@@ -26,6 +33,7 @@ set showtabline=2
 " set shellslash
 
 "  set termguicolors
+
 
 set mouse=
 
@@ -67,11 +75,11 @@ if dein#load_state($HOME . '/AppData/Local/nvim/dein')
   let s:toml_dir  = $HOME . '/AppData/Local/nvim/dein/toml'
   if exists('g:vscode')
     nnoremap <silent> :e <Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>
-    let s:toml      = s:toml_dir . '/dein_vscode.toml'
-    let s:lazy_toml = s:toml_dir . '/dein_vscode_lazy.toml'
+    let s:toml      = s:toml_dir . '/dein.toml'
+    let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
   else
-    let s:toml      = s:toml_dir . '/lsp.toml'
-    let s:lazy_toml = s:toml_dir . '/lsp_lazy.toml'
+    let s:toml      = s:toml_dir . '/dein.toml'
+    let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
 
   endif
 
@@ -95,11 +103,63 @@ endif
 "End dein Scripts-------------------------
 
 if !exists('g:vscode')
+  " ddc.vim
+  call ddc#custom#patch_global('ui', 'native')
+  call ddc#custom#patch_global('sources', ['around'])
+  call ddc#custom#patch_global('sources', ['vim-lsp'])
+  call ddc#custom#patch_global('sourceOptions', #{
+        \ _: #{
+        \   matchers: ['matcher_head'],
+        \   sorters: ['sorter_rank']},
+        \   minAutoCompletionLength: 0,
+        \ })
+  call ddc#custom#patch_global('sourceOptions', #{
+        \   around: #{ mark: 'A' },
+        \ })
 
-  " lua require('config')
-  
+  call ddc#enable()
+
+  " vim-lsp
+  if executable('pylsp')
+      " pip install python-lsp-server
+      au User lsp_setup call lsp#register_server({
+          \ 'name': 'pylsp',
+          \ 'cmd': {server_info->['pylsp']},
+          \ 'allowlist': ['python'],
+          \ })
+  endif
+
+  function! s:on_lsp_buffer_enabled() abort
+      setlocal omnifunc=lsp#complete
+      setlocal signcolumn=yes
+      if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+      nmap <buffer> gd <plug>(lsp-definition)
+      nmap <buffer> gs <plug>(lsp-document-symbol-search)
+      nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+      nmap <buffer> gr <plug>(lsp-references)
+      nmap <buffer> gi <plug>(lsp-implementation)
+      nmap <buffer> gt <plug>(lsp-type-definition)
+      nmap <buffer> <leader>rn <plug>(lsp-rename)
+      nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+      nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+      nmap <buffer> K <plug>(lsp-hover)
+      " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+      " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+      let g:lsp_format_sync_timeout = 1000
+      autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+      
+      " refer to doc to add more commands
+  endfunction
+
+  augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  augroup END
+
   " lexima
-  " call lexima#add_rule({'char': '<', 'input_after': '>'})
+  call lexima#add_rule({'char': '<', 'input_after': '>'})
 
 else
   " ddc.vim
@@ -158,10 +218,11 @@ else
   augroup END
 endif
 
-colorscheme desert
-" set t_Co=256
-" set t_ut=
-" colorscheme codedark
+" colorscheme desert
+set t_Co=256
+set t_ut=
+colorscheme codedark
 " colorscheme pyceberg
+
 
 

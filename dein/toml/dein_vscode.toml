@@ -1,6 +1,26 @@
-# Required:
 [[plugins]]
 repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+
+[[plugins]]
+repo = 'shun/ddc-source-vim-lsp'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-around'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nextword'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -16,4 +36,19 @@ repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'vim-denops/denops-helloworld.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
 

@@ -10,7 +10,6 @@ repo = 'shun/ddc-source-vim-lsp'
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-native'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-around'
@@ -116,9 +115,11 @@ repo = 'kuroitu/pyceberg'
 
 [[plugins]]
 repo = 'vim-python/python-syntax'
-# hook_add = '''
-# let g:python_highlight_all = 1
-# '''
+hook_add = '''
+let g:python_highlight_all=1
+let g:python_version_2=0
+let b:python_version_2=0
+'''
  
 # [[plugins]]
 # repo = 'Mofiqul/vscode.nvim'
