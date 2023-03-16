@@ -38,7 +38,11 @@ end
 
 vim.g.mapleader = " "
 
-vim.cmd [[colorscheme desert]]
+if not vim.g.vscode then
+  vim.cmd [[colorscheme desert]]
+else
+  vim.keymap.set('n', ":e", "<Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>", {silent = true})
+end
 
 
 
