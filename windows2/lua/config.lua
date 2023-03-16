@@ -1,4 +1,5 @@
 -- 1. LSP Sever management
+require('plugins')
 require('mason').setup()
 require('mason-lspconfig').setup_handlers({ function(server)
   local opt = {
