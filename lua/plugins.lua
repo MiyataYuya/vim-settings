@@ -49,4 +49,30 @@ return require('packer').startup(function(use)
           vim.fn["lexima#add_rule"]({char = '<', input_after = '>'})
         end
       }
+  -- use { 'tell-k/vim-autopep8',
+  -- config = function()
+  --             vim.cmd([[
+  --             function! Preserve(command)
+  --               let search = @/
+  --               let cursor_position = getpos('.')
+  --               normal! H
+  --               let window_position = getpos('.')
+  --               call setpos('.', cursor_position)
+  --               execute a:command
+  --               let @/ = search
+  --               call setpos('.', window_position)
+  --               normal! zt
+  --               call setpos('.', cursor_position)
+  --             endfunction
+  --             ]])
+
+  --             vim.cmd([[
+  --             function! Autopep8()
+  --                 call Preserve(':silent %!autopep8 --ignore=E501 -')
+  --             endfunction
+  --             ]], true)
+
+  --             vim.cmd('autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>')
+  --          end
+  --  }
 end)
