@@ -30,6 +30,7 @@ return require('packer').startup(function(use)
       }
   use 'vim-airline/vim-airline-themes'
   use 'tomasiser/vim-code-dark'
+  use 'Mofiqul/vscode.nvim'
   use 'kuroitu/pyceberg'
   use { 'vim-python/python-syntax',
         config = function()
