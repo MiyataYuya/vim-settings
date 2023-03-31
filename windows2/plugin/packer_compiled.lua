@@ -152,6 +152,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\miyata\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-indent-guides"] = {
+    loaded = true,
+    path = "C:\\Users\\miyata\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-indent-guides",
+    url = "https://github.com/nathanaelkane/vim-indent-guides"
+  },
   ["vim-indent-object"] = {
     loaded = true,
     path = "C:\\Users\\miyata\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-indent-object",
@@ -168,7 +173,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/vim-vsnip"
   },
   ["vim-workspace"] = {
-    config = { "\27LJ\2\nW\0\0\5\0\6\0\b6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0'\4\5\0B\0\4\1K\0\1\0\25:ToggleWorkspace<CR>\14<leader>s\6n\bset\vkeymap\bvim\0" },
+    config = { "\27LJ\2\n²\1\0\0\5\0\t\0\0166\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0'\4\5\0B\0\4\0016\0\0\0009\0\6\0)\1\0\0=\1\a\0006\0\0\0009\0\6\0)\1\0\0=\1\b\0K\0\1\0#workspace_persist_undo_history\30workspace_create_new_tabs\6g\25:ToggleWorkspace<CR>\14<leader>s\6n\bset\vkeymap\bvim\0" },
     loaded = true,
     path = "C:\\Users\\miyata\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-workspace",
     url = "https://github.com/thaerkh/vim-workspace"
@@ -176,27 +181,27 @@ _G.packer_plugins = {
   ["vscode.nvim"] = {
     loaded = true,
     path = "C:\\Users\\miyata\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vscode.nvim",
-    url = "https://github.com/Mofifqul/vscode.nvim"
+    url = "https://github.com/Mofiqul/vscode.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-workspace
-time([[Config for vim-workspace]], true)
-try_loadstring("\27LJ\2\nW\0\0\5\0\6\0\b6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0'\4\5\0B\0\4\1K\0\1\0\25:ToggleWorkspace<CR>\14<leader>s\6n\bset\vkeymap\bvim\0", "config", "vim-workspace")
-time([[Config for vim-workspace]], false)
 -- Config for: python-syntax
 time([[Config for python-syntax]], true)
 try_loadstring("\27LJ\2\n6\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\25python_highlight_all\6g\bvim\0", "config", "python-syntax")
 time([[Config for python-syntax]], false)
--- Config for: vim-airline
-time([[Config for vim-airline]], true)
-try_loadstring("\27LJ\2\né\1\0\0\6\0\f\0\0216\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\3\0009\0\4\0'\2\5\0'\3\6\0'\4\a\0005\5\b\0B\0\5\0016\0\0\0009\0\3\0009\0\4\0'\2\5\0'\3\t\0'\4\n\0005\5\v\0B\0\5\1K\0\1\0\1\0\1\vsilent\2\31<Plug>AirlineSelectNextTab\n<C-n>\1\0\1\vsilent\2\31<Plug>AirlineSelectPrevTab\n<C-p>\6n\bset\vkeymap'airline#extensions#tabline#enabled\6g\bvim\0", "config", "vim-airline")
-time([[Config for vim-airline]], false)
 -- Config for: lexima.vim
 time([[Config for lexima.vim]], true)
 try_loadstring("\27LJ\2\nN\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\tchar\6<\16input_after\6>\20lexima#add_rule\afn\bvim\0", "config", "lexima.vim")
 time([[Config for lexima.vim]], false)
+-- Config for: vim-workspace
+time([[Config for vim-workspace]], true)
+try_loadstring("\27LJ\2\n²\1\0\0\5\0\t\0\0166\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0'\4\5\0B\0\4\0016\0\0\0009\0\6\0)\1\0\0=\1\a\0006\0\0\0009\0\6\0)\1\0\0=\1\b\0K\0\1\0#workspace_persist_undo_history\30workspace_create_new_tabs\6g\25:ToggleWorkspace<CR>\14<leader>s\6n\bset\vkeymap\bvim\0", "config", "vim-workspace")
+time([[Config for vim-workspace]], false)
+-- Config for: vim-airline
+time([[Config for vim-airline]], true)
+try_loadstring("\27LJ\2\né\1\0\0\6\0\f\0\0216\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\3\0009\0\4\0'\2\5\0'\3\6\0'\4\a\0005\5\b\0B\0\5\0016\0\0\0009\0\3\0009\0\4\0'\2\5\0'\3\t\0'\4\n\0005\5\v\0B\0\5\1K\0\1\0\1\0\1\vsilent\2\31<Plug>AirlineSelectNextTab\n<C-n>\1\0\1\vsilent\2\31<Plug>AirlineSelectPrevTab\n<C-p>\6n\bset\vkeymap'airline#extensions#tabline#enabled\6g\bvim\0", "config", "vim-airline")
+time([[Config for vim-airline]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

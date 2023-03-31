@@ -48,11 +48,11 @@ set updatetime=500
 highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
 highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
 highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-augroup lsp_document_highlight
-  autocmd!
-  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-augroup END
+" augroup lsp_document_highlight
+"   autocmd!
+"   autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+"   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+" augroup END
 ]]
 
 -- 3. completion (hrsh7th/nvim-cmp)
@@ -93,18 +93,3 @@ cmp.setup({
 --   },
 -- })
 --
-local c= require('vscode.colors').get_colors()
-require('vscode').setup({
-  transparent = true,
-  italic_comments = true,
-  disable_nvimtree_bg = true,
-  color_ocerrides = {
-    vsLineNumber = '#FFFFFF',
-  },
-  group_overrides = {
-    Cursor = {
-      fg=c.vscDarkBlue, bg=c.vscLightGleen, bold=true
-    },
-  }
-})
-require('vscode').load()
