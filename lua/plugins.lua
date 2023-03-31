@@ -18,6 +18,8 @@ return require('packer').startup(function(use)
   use { 'thaerkh/vim-workspace',
         config = function()
           vim.keymap.set('n', "<leader>s", ":ToggleWorkspace<CR>")
+          vim.g.workspace_create_new_tabs = 0
+          vim.g.workspace_persist_undo_history = 0
         end
       }
 
@@ -30,25 +32,19 @@ return require('packer').startup(function(use)
       }
   use 'vim-airline/vim-airline-themes'
   use 'tomasiser/vim-code-dark'
-  use 'Mofiqul/vscode.nvim'
-  use 'kuroitu/pyceberg'
-  use { 'vim-python/python-syntax',
-        config = function()
-          vim.g.python_highlight_all = 1
-        end
-      }
-  -- end
 
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
   use 'easymotion/vim-easymotion'
   use 'michaeljsmith/vim-indent-object'
-  use { 'cohama/lexima.vim',
-        config = function()
-          vim.fn["lexima#add_rule"]({char = '<', input_after = '>'})
-        end
-      }
+  use 'cohama/lexima.vim'
+  use {'nathanaelkane/vim-indent-guides'}
+  -- use {'nathanaelkane/vim-indent-guides',
+  --       config = function()
+  --         vim.g.indent_guides_enable_on_vim_startup = 1
+  --       end}
+  -- use {'adi/vim-indent-rainbow'}
   -- use { 'tell-k/vim-autopep8',
   -- config = function()
   --             vim.cmd([[
