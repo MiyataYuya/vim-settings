@@ -1,5 +1,6 @@
 -- require "plugins"
 vim.g.python3_host_prog = [[C:\Python311\python.EXE]]
+require "plugins"
 require "config"
 
 vim.cmd([[
@@ -24,10 +25,10 @@ local options = {
   smartindent   = true,
   softtabstop   = 2,
   tabstop       = 2,
-  termencoding  = "utf-8",
+--  termencoding  = "utf-8",
 -- scriptencoding utf-8,
 -- autochdir,
-  -- shell=pwsh,
+-- shell=pwsh,
 -- shell=C:\Program\ Files\Git\bin\bash.exe,
 -- shellcmdflag=-c,
 -- shellquote=",

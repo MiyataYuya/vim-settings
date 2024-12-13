@@ -15,13 +15,6 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/vim-vsnip'
-  use { 'thaerkh/vim-workspace',
-        config = function()
-          vim.keymap.set('n', "<leader>s", ":ToggleWorkspace<CR>")
-          vim.g.workspace_create_new_tabs = 0
-          vim.g.workspace_persist_undo_history = 0
-        end
-      }
 
   use { 'vim-airline/vim-airline',
         config = function()
@@ -71,4 +64,6 @@ return require('packer').startup(function(use)
   --             vim.cmd('autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>')
   --          end
   --  }
+  --  lsp
+  use 'github/copilot.vim'
 end)
