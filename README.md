@@ -1,108 +1,72 @@
 # 自分用nvim設定ファイル
 
-## windowsの場合
+lazy.nvimベースのNeovim設定。
 
-0. 準備
+## セットアップ
 
-   * Gitをインストールする。
-   ```pwsh
-    winget install Git.Git 
-   ```
-    * neovimをインストールする。
-    ```pwsh
-     winget install nvim
-    ```
+### 0. 準備
 
-1. リポジトリをクローンする。
+Git と Neovim をインストールする。
 
-    ```pwsh
-    git clone https://github.com/MiyataYuya/vim-settings.git
-    ```
+**Windows:**
+```pwsh
+winget install Git.Git
+winget install Neovim.Neovim
+```
 
-2. ディレクトリを作成
+**Linux (Ubuntu):**
+```bash
+sudo snap install nvim --classic
+```
 
-    ```pwsh
-    mkdir ~/AppData/Local/nvim
-    ```
+### 1. リポジトリをクローンする
 
-3. リポジトリの`windows2`の一部をコピーする
+```bash
+git clone https://github.com/MiyataYuya/vim-settings.git
+```
 
-   ```pwsh
-   cp init.lua ~/AppData/Local/nvim/init.lua
-   cp lua ~/AppData/Local/nvim/
-   cp plugin ~/AppData/Local/nvim/
-   ```
+### 2. 設定ファイルをコピーする
 
-4. nvimのパッケージマネージャー、packerをインストールする。
+**Windows:**
+```pwsh
+Copy-Item -Recurse vim-settings/nvim/* ~/AppData/Local/nvim/
+```
 
-   ```pwsh
-   git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
-   ```
+**Linux / macOS:**
+```bash
+mkdir -p ~/.config/nvim
+cp -r vim-settings/nvim/* ~/.config/nvim/
+```
 
-5. nvimを起動し、`:PackerUpdate`を実行する。
+### 3. Neovimを起動する
 
-6. nvimを再起動すると設定が適用されているはず。
+```bash
+nvim
+```
 
-## linux(wsl)の場合
+初回起動時にlazy.nvimが自動でインストールされ、プラグインがセットアップされる。
 
-0. 準備
-   
-   * wslをインストールする。
+## 構成
 
-   ```pwsh
-   wsl --install
-   ``` 
-   
-   * ディストリビューション(ここではUbuntu24.04)をインストールする。
-
-   ```pwsh
-   wsl --install Ubuntu-24.04 -n
-   ```
-   
-   * PCを再起動する。
-   * aptをアップデートする。
-
-   ```bash
-   sudo apt update && sudo apt upgrade -y
-   ```
-
-1. nvimをインストールする。
-
-   ```bash
-   sudo snap install nvim --classic
-   ```
-   
-   ※ここまできてvscodeでnvimが使える。
-
-2. リポジトリをクローンする。
-
-   ```bash
-   git clone https://github.com/MiyataYuya/vim-settings.git
-   ```
-
-3. ディレクトリを作成
-
-   ```bash
-   mkdir .config
-   mkdir .config/nvim
-   ```
-
-4. リポジトリの`linux`の一部をコピーする
-
-   ```bash
-   cp init.lua ~/.config/nvim/
-   mkdir ~/.config/nvim/lua
-   cp lua/config.lua ~/.config/nvim/lua/
-   cp lua/plugins.lua ~/.config/nvim/lua/
-   ```
-
-5. nvimのパッケージマネージャー、packerをインストールする。
-
-   ```bash
-   git clone --depth 1 https://github.com/wbthomason/packer.nvim\ 
-   ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-   ```
-
-6. nvimを起動し、`:PackerUpdate`を実行する。
-7. nvimを再起動すると設定が適用されているはず。
-
+```
+nvim/
+├── init.lua              -- エントリポイント
+├── lazy-lock.json        -- プラグインバージョンのロックファイル
+└── lua/
+    ├── config/
+    │   ├── lazy.lua      -- lazy.nvimのブートストラップと設定
+    │   ├── options.lua   -- Neovimオプション
+    │   └── keymaps.lua   -- キーマッピング
+    └── plugins/
+        ├── init.lua      -- その他プラグイン
+        ├── colorscheme.lua
+        ├── completion.lua
+        ├── copilot.lua
+        ├── editor.lua
+        ├── explorer.lua
+        ├── git.lua
+        ├── lsp.lua
+        ├── telescope.lua
+        ├── treesitter.lua
+        └── ui.lua
+```
