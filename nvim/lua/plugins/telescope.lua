@@ -26,14 +26,29 @@ return {
     },
     config = function()
       local telescope = require("telescope")
+
+      -- rg / fd が PATH 上に無い環境では find_command を上書きせず既定(find等)にフォールバックする
+      local find_files_opts = { hidden = true }
+      if vim.fn.executable("rg") == 1 then
+        -- ripgrep は .gitignore を既定で尊重するため node_modules 等が最初から候補に出ない
+        find_files_opts.find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" }
+      elseif vim.fn.executable("fd") == 1 or vim.fn.executable("fdfind") == 1 then
+        -- fd も .gitignore を既定で尊重する。コマンド名はデフォルト検出に任せる
+        find_files_opts.find_command = nil
+      end
+
       telescope.setup({
         defaults = {
+          file_ignore_patterns = { "node_modules/", "%.git/", "dist/", "build/" },
           mappings = {
             i = {
               ["<C-j>"] = "move_selection_next",
               ["<C-k>"] = "move_selection_previous",
             },
           },
+        },
+        pickers = {
+          find_files = find_files_opts,
         },
       })
       pcall(telescope.load_extension, "fzf")
